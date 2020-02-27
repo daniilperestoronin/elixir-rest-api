@@ -5,7 +5,7 @@ defmodule RestApi.MixProject do
     [
       app: :rest,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.3.4",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
