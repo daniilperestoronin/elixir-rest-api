@@ -1,3 +1,5 @@
+https://travis-ci.com/daniilperestoronin/elixir-rest-api.svg?branch=master
+
 # Rest
 
 **TODO: Add description**
