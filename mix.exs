@@ -15,7 +15,7 @@ defmodule RestApi.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {RestApi, []}
+      mod: {RestApi.Application, []}
     ]
   end
 
@@ -23,7 +23,8 @@ defmodule RestApi.MixProject do
   defp deps do
     [
       {:cowboy, "~> 1.1.2"},
-      {:plug, "~> 1.3.4"}
+      {:plug, "~> 1.3.4"},
+      {:poison, "~> 1.4.0"}
     ]
   end
 end

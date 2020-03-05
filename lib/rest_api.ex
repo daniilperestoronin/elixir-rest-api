@@ -1,14 +1,34 @@
+defmodule RestApi.Model.User do
+  defstruct [:id, :name, :email, :password, :stooge]
+end
+
 defmodule RestApi.Router do
   use Plug.Router
 
   plug(:match)
   plug(:dispatch)
+  plug(Plug.Logger, log: :debug)
+  plug(Plug.Parsers, parsers: [:json], pass: ["text/*"], json_decoder: Poison)
 
-  get("/", do: send_resp(conn, 200, "Welcome"))
-  match(_, do: send_resp(conn, 404, "Oops!"))
+  get("/",
+    do:
+      send_resp(
+        conn,
+        200,
+        Poison.encode!(%RestApi.Model.User{
+          id: 1,
+          name: "Joe",
+          email: "joe@example.com",
+          password: "topsecret",
+          stooge: "moe"
+        })
+      )
+  )
+
+  match(_, do: send_resp(conn, 404, "Not found"))
 end
 
-defmodule RestApi do
+defmodule RestApi.Application do
   use Application
   require Logger
 
